@@ -302,12 +302,12 @@ class Comment_dataset(Dataset):
         self.data = raw_data
 
     def __getitem__(self, index):
-        return torch.tensor(self.data.loc[index, self.sample_column], dtype = torch.long)
+        return torch.tensor(eval(self.data.loc[index, self.sample_column]), dtype = torch.long)
 
     def __len__(self):
         return len(self.data)
 
-    def collate(self, batch): 
+    def collate(self, batch):
         return batch
 
 class prepend_ctrl_Dataset(Dataset):
