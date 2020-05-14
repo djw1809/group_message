@@ -302,7 +302,7 @@ class Comment_dataset(Dataset):
         self.data = raw_data
 
     def __getitem__(self, index):
-        return torch.tensor(eval(self.data.loc[index, self.sample_column]), dtype = torch.long)
+        return torch.tensor(eval(self.data.loc[index, self.sample_column]))
 
     def __len__(self):
         return len(self.data)
