@@ -41,7 +41,7 @@ model_path = Path(Path(model_storage_dir)/Path(parameter_dict['filename']))
 results_path.mkdir(parents = True, exist_ok = True)
 model_path.mkdir(parents = True, exist_ok = True)
 
-dataset = butils.Comment_dataset(data, 'token_ids')
+dataset = butils.Comment_dataset(data, 'token_ids', tokenizer)
 
 model = GPT2LMHeadModel.from_pretrained('gpt2')
 

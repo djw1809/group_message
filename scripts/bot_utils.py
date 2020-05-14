@@ -297,7 +297,8 @@ class Comment_data_preprocessor(Dataset):
 
 class Comment_dataset(Dataset):
 
-    def __init__(self, raw_data, sample_column):
+    def __init__(self, raw_data, sample_column, tokenizer):
+        self.tokenizer = tokenizer
         self.sample_column = sample_column
         self.data = raw_data
 
