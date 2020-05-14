@@ -307,6 +307,9 @@ class Comment_dataset(Dataset):
     def __len__(self):
         return len(self.data)
 
+    def collate_fn(self, batch): 
+        return batch
+
 class prepend_ctrl_Dataset(Dataset):
 
     def __init__(self, preprocessor, tokenizer = None):

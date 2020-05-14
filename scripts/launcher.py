@@ -22,7 +22,7 @@ data = pd.read_csv(training_set_path)
 parameter_dict = {}
 #Currently huggingface defaults for training GPT2 (except more epochs)
 parameter_dict['training_set_path'] = training_set_path
-parameter_dict['epochs'] = 5
+parameter_dict['epochs'] = 8
 parameter_dict['num_worker'] = 2
 parameter_dict['batch_size'] =2
 parameter_dict['learning_rate'] =5e-5
@@ -40,6 +40,7 @@ model_path = Path(Path(model_storage_dir)/Path(parameter_dict['filename']))
 results_path.mkdir(parents = True, exist_ok = True)
 model_path.mkdir(parents = True, exist_ok = True)
 
+dataset = butils.Comment_dataset(data, 'text')
 
 model = GPT2LMHeadModel.from_pretrained('gpt2')
 
