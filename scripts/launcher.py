@@ -14,7 +14,7 @@ import bot_models as models
 
 tokenizer=GPT2Tokenizer.from_pretrained('gpt2')
 
-training_set_path = '../data/datasets/cami_training.csv'
+training_set_path = '../data/datasets/cami_051320.csv'
 data = pd.read_csv(training_set_path)
 
 
@@ -40,7 +40,7 @@ model_path = Path(Path(model_storage_dir)/Path(parameter_dict['filename']))
 results_path.mkdir(parents = True, exist_ok = True)
 model_path.mkdir(parents = True, exist_ok = True)
 
-dataset = butils.Comment_dataset(data, 'text')
+dataset = butils.Comment_dataset(data, 'token_ids')
 
 model = GPT2LMHeadModel.from_pretrained('gpt2')
 
