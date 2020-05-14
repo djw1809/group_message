@@ -308,7 +308,16 @@ class Comment_dataset(Dataset):
         return len(self.data)
 
     def collate(self, batch):
-        return torch.tensor(batch)
+        tokenizer = self.tokenizer
+        text_ids = [torch.tensor(item) for item in batch]
+
+        if tokenizer._pad_token is None:
+             padded_texts = pad_sequence(text_ids, batch_first = True)
+        else:
+             padded_texts = pad_sequence(text_ids, batch_first = True, padding_value = tokenizer.pad_token_id)
+
+        return padded_texts
+
 
 class prepend_ctrl_Dataset(Dataset):
 

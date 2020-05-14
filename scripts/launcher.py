@@ -54,8 +54,8 @@ trained_model, optimizer, scheduler, loss_data = butils.train(dataset,
                                                                   parameter_dict['eps'],
                                                                   parameter_dict['warmup_steps'],
                                                                   model,
-                                                                  collate_fn = dataset.collate
-                                                                  )
+                                                                  collate_fn = dataset.collate)
+
 
 
 #saving transformers stuff - this can all be loaded again using (transformer_object).from_pretrained(model_storage_dir+'/'+parameter_dict['filename'])
