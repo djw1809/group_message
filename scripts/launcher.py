@@ -14,8 +14,9 @@ import bot_models as models
 
 tokenizer=GPT2Tokenizer.from_pretrained('gpt2')
 
-training_set_path = '../data/datasets/cami_051320.csv'
+training_set_path = '../data/datasets/cami_training.csv'
 data = pd.read_csv(training_set_path)
+data.columns
 
 
 
