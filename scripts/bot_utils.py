@@ -308,7 +308,7 @@ class Comment_dataset(Dataset):
         return len(self.data)
 
     def collate(self, batch):
-        return batch
+        return tprch.tensor(batch)
 
 class prepend_ctrl_Dataset(Dataset):
 
