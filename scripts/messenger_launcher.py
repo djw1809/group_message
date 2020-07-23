@@ -59,7 +59,7 @@ trained_model, optimizer, scheduler, loss_data = butils.train(dataset,
 
 
 #saving transformers stuff - this can all be loaded again using (transformer_object).from_pretrained(model_storage_dir+'/'+parameter_dict['filename'])
-tokenized_comments.to_csv(results_path/'training_data.csv')
+data.to_csv(results_path/'training_data.csv')
 trained_model.save_pretrained(model_storage_dir+'/'+parameter_dict['filename'])
 tokenizer.save_pretrained(model_storage_dir+'/'+parameter_dict['filename'])
 trained_model.config.save_pretrained(model_storage_dir+'/'+parameter_dict['filename'])
