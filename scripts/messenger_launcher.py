@@ -4,12 +4,11 @@ import torch
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import bot_utils as butils
+import messenger_utils as butils
 import json
-import bot_models as models
 from transformers import GPT2Tokenizer, GPT2LMHeadModel
 from pathlib import Path
-import bot_models as models
+import messenger_models as models
 # %%
 
 tokenizer=GPT2Tokenizer.from_pretrained('gpt2')
@@ -17,20 +16,21 @@ tokenizer=GPT2Tokenizer.from_pretrained('gpt2')
 training_set_path = '../data/datasets/cami_training.csv'
 data = pd.read_csv(training_set_path)
 
+data = data[0:10]
 
 
 
 parameter_dict = {}
 #Currently huggingface defaults for training GPT2 (except more epochs)
 parameter_dict['training_set_path'] = training_set_path
-parameter_dict['epochs'] = 8
+parameter_dict['epochs'] = 1
 parameter_dict['num_worker'] = 2
 parameter_dict['batch_size'] =2
 parameter_dict['learning_rate'] =5e-5
 parameter_dict['weight_decay'] = 0
 parameter_dict['eps'] =1e-8
 parameter_dict['warmup_steps'] =0
-parameter_dict['filename'] = 'cami_bot_051220'
+parameter_dict['filename'] = 'test' #'cami_bot_051220'
 
 results_dir ='../results'
 model_storage_dir ='../saved_models'
