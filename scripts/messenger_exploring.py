@@ -8,11 +8,28 @@ from transformers import GPT2Tokenizer
 
 
 
-training = pd.read_csv('../data/datasets/cami_training.csv')
+training1 = pd.read_csv('../data/datasets/cami_training.csv')
+training = training.drop(columns = ['Unnamed: 0'])
+training.to_csv('../data/datasets/cami_training.csv', index = False)
+len(training1)
+#%%
 training
 training = training.drop(columns = ['Unnamed: 0', 'id'])
 training['id'] = training.index
 training.to_csv('../data/datasets/cami_training.csv')
+#%%
+for i in training.index:
+    if len(eval(training.loc[i, 'token_ids'])) == 1 or len(eval(training.loc[i, 'token_ids'])) == 0:
+        training = training.drop(i)
+len_list = [len(eval(training.loc[i, 'token_ids'])) for i in training.index]
+min(len_list)
+
+example = eval(training.loc[509, 'token_ids'])
+example
+len(example)
+
+len(training)
+training.to_csv('../data/datasets/cami_training.csv', index = False)
 #%%
 bad_list = []
 for i in training.index:
