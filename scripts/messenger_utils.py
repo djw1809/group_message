@@ -451,8 +451,11 @@ def train(training_dataset, epochs, num_workers, batch_size, learning_rate, weig
             #optimizer.zero_grad()
 
             #forward
-            loss = model(inputs, labels = labels)[0]
-
+            try:
+                loss = model(inputs, labels = labels)[0]
+            except:
+                print(batch)
+                return 
             #backwards
             loss.backward()
             optimizer.step()

@@ -1,10 +1,24 @@
 import json
 import pandas as pd
 import torch
-import bot_utils as butils
-import bot_models as models
+import messenger_utils as butils
+import messenger_models as models
 from transformers import GPT2Tokenizer
+#%%
 
+
+
+training = pd.read_csv('../data/datasets/cami_training.csv')
+training
+training = training.drop(columns = ['Unnamed: 0', 'id'])
+training['id'] = training.index
+training.to_csv('../data/datasets/cami_training.csv')
+#%%
+bad_list = []
+for i in training.index:
+    if len(training.loc[i, 'token_ids']) == 0:
+        bad_list.append(i)
+bad_list
 #%% all messages
 big_data = []
 
