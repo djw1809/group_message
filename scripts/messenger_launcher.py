@@ -16,7 +16,7 @@ tokenizer=GPT2Tokenizer.from_pretrained('gpt2')
 training_set_path = '../data/datasets/cami_training.csv'
 data = pd.read_csv(training_set_path)
 
-data = data[0:50]
+data = data[0:500]
 parameter_dict = {}
 #Currently huggingface defaults for training GPT2 (except more epochs)
 parameter_dict['training_set_path'] = training_set_path
